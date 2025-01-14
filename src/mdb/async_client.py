@@ -61,7 +61,7 @@ class AsyncClient(ABC):
         try:
             cert_host = gethostbyaddr(self.exchange_hostname)[0]
             reader, writer = await asyncio.open_connection(
-                cert_host, self.exchange_port, ssl=self.context
+                cert_host, self.exchange_port, ssl=self.context, limit=256 * 1024
             )
             self.conn = AsyncConnection(reader, writer)
         except Exception as e:

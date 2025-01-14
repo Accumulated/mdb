@@ -177,6 +177,7 @@ class AsyncExchangeServer:
             self.hostname,
             self.port,
             ssl=self.context,
+            limit=256 * 1024,
         )
         return task
 
